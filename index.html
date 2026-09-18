@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="NAVI DIGITAL HIGH TECH STUDIO & VIDEOS - Wedding photography, videography, portraits, passport photos, printing, framing, albums and events in Dharmapuri, Tamil Nadu.">
+<meta name="keywords" content="NAVI Digital High Tech Studio, Dharmapuri photography, Tamil Nadu wedding photography, wedding videography, passport photo, photo printing, frames, album design, drone service">
+<meta name="author" content="NAVI DIGITAL HIGH TECH STUDIO & VIDEOS">
+<meta name="robots" content="index, follow">
+<title>NAVI DIGITAL HIGH TECH STUDIO & VIDEOS | Dharmapuri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+ --black:#050505;--black2:#0c0c0c;--black3:#151515;--gold:#d4af37;--gold2:#f1d77a;
+ --white:#fff;--muted:#a8a8a8;--line:#272727;--soft:#f6f6f4;--green:#10c86e;
+ --shadow:0 18px 55px rgba(0,0,0,.12);--radius:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;color:#171717;background:#fff;line-height:1.65;overflow-x:hidden}
+body.modal-open{overflow:hidden}
+a{text-decoration:none;color:inherit} button,input,select,textarea{font:inherit}
+img{display:block;max-width:100%}
+.container{width:min(1180px,92%);margin:auto}
+.section{padding:88px 0}
+.section.dark{background:var(--black);color:#fff}
+.section.soft{background:var(--soft)}
+.section-title{max-width:760px;margin:0 auto 44px;text-align:center}
+.section-title .eyebrow{display:inline-block;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:2px}
+.section-title h2{font-size:clamp(30px,4vw,46px);line-height:1.12;margin:7px 0 12px}
+.section-title p{color:#777;font-size:14px}
+.dark .section-title p{color:#aaa}
+.gold{color:var(--gold)}
+
+/* loader */
+#loader{position:fixed;inset:0;background:var(--black);z-index:9999;display:grid;place-items:center;transition:.5s}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-inner{text-align:center;color:#fff}
+.loader-logo{width:84px;height:84px;object-fit:cover;border-radius:16px;margin:0 auto 18px;box-shadow:0 0 35px rgba(212,175,55,.28)}
+.loader-line{width:170px;height:3px;background:#222;overflow:hidden;margin:auto}
+.loader-line span{display:block;width:55%;height:100%;background:var(--gold);animation:load 1.2s infinite}
+@keyframes load{0%{transform:translateX(-110%)}100%{transform:translateX(280%)}}
+
+/* header */
+header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:10px solid #203b36;box-shadow:0 3px 22px rgba(0,0,0,.08)}
+.navbar{height:82px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand img{width:70px;height:58px;object-fit:cover;border-radius:9px}
+.brand-text{font-size:17px;font-weight:900;line-height:1.05;white-space:nowrap}
+.brand-text .top{color:var(--gold)}
+.brand-text .sub{display:block;font-size:9px;letter-spacing:2px;color:#777;margin-top:6px}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:12px;font-weight:800;color:#333;position:relative}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:-9px;width:0;height:2px;background:var(--gold);transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:#000}
+.nav-links a:hover:after,.nav-links a.active:after{width:100%}
+.nav-call{background:var(--black);color:var(--gold)!important;padding:12px 16px;border-radius:10px}
+.menu-btn{display:none;border:0;background:none;font-size:25px;cursor:pointer;color:#111}
+
+/* hero */
+.hero{position:relative;min-height:650px;display:flex;align-items:center;color:#fff;overflow:hidden;background:#050505}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;pointer-events:none}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.55),rgba(0,0,0,.38))}
+.hero-content{position:relative;z-index:2;padding:100px 0;max-width:760px}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,175,55,.55);background:rgba(212,175,55,.1);color:#fff;padding:8px 13px;border-radius:30px;font-size:11px;font-weight:700;letter-spacing:.7px}
+.hero h1{font-size:clamp(38px,6vw,72px);line-height:1.03;margin:20px 0 16px;font-weight:900;letter-spacing:-2px}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:650px;color:#eee;font-size:15px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:13px 20px;font-weight:800;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#080808;box-shadow:0 10px 28px rgba(212,175,55,.22)}
+.btn-dark{background:#111;color:#fff;border:1px solid #333}
+.btn-wa{background:var(--green);color:#fff}
+.hero-points{display:flex;gap:20px;flex-wrap:wrap;margin-top:30px}
+.hero-points span{font-size:12px;display:flex;align-items:center;gap:7px;color:#eee}
+.hero-points i{color:var(--gold)}
+.hero-arrow{position:absolute;z-index:4;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(255,255,255,.65);background:rgba(0,0,0,.28);color:#fff;border-radius:50%;cursor:pointer}
+.hero-arrow.prev{left:20px} .hero-arrow.next{right:20px}
+.hero-dots{position:absolute;z-index:4;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.hero-dots button{width:9px;height:9px;border-radius:50%;border:0;background:#fff;opacity:.7;cursor:pointer}
+.hero-dots button.active{background:var(--gold);opacity:1;transform:scale(1.25)}
+
+/* stats */
+.stats{margin-top:-45px;position:relative;z-index:5}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.stat{padding:24px;text-align:center;border-right:1px solid #eee}
+.stat:last-child{border:0} .stat strong{display:block;font-size:28px;color:#111} .stat strong span{color:var(--gold)} .stat small{color:#777}
+
+/* services */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.service-card{padding:27px 22px;border:1px solid #e8e8e8;border-radius:18px;background:#fff;transition:.3s;box-shadow:0 7px 25px rgba(0,0,0,.035)}
+.service-card:hover{transform:translateY(-7px);border-color:#d4af37;box-shadow:var(--shadow)}
+.service-icon{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;background:var(--black);color:var(--gold);font-size:21px;margin-bottom:16px}
+.service-card h3{font-size:17px;margin-bottom:7px} .service-card p{font-size:12.5px;color:#777}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-photo{border-radius:24px;overflow:hidden;border:1px solid #333}
+.about-photo img{height:470px;width:100%;object-fit:cover}
+.dark h2{color:#fff}
+.about-copy p{color:#bdbdbd;font-size:14px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:23px}
+.check{font-size:12px;color:#eee;display:flex;gap:8px} .check i{color:var(--gold);margin-top:5px}
+
+/* gallery */
+.gallery-tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.gallery-tabs button{border:1px solid #ddd;background:#fff;color:#555;padding:9px 15px;border-radius:25px;font-size:12px;font-weight:800;cursor:pointer;transition:.2s}
+.gallery-tabs button.active,.gallery-tabs button:hover{background:var(--black);color:var(--gold);border-color:var(--black)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery-card{height:270px;border-radius:16px;overflow:hidden;position:relative;background:#eee;cursor:pointer;outline:none}
+.gallery-card.wide{grid-column:span 2}
+.gallery-card img{width:100%;height:100%;object-fit:cover;transition:.55s}
+.gallery-card:hover img,.gallery-card:focus img{transform:scale(1.07)}
+.gallery-overlay{position:absolute;inset:auto 0 0;padding:55px 15px 14px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.9));display:flex;justify-content:space-between;align-items:flex-end;opacity:0;transition:.3s}
+.gallery-card:hover .gallery-overlay,.gallery-card:focus .gallery-overlay{opacity:1}
+.gallery-overlay strong{display:block;font-size:13px} .gallery-overlay small{display:block;color:var(--gold);font-size:10px;margin-top:2px}
+.view-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(212,175,55,.9);color:#111}
+.gallery-card.img-error:after{content:"NAVI • IMAGE";position:absolute;inset:0;display:grid;place-items:center;background:#111;color:var(--gold);font-weight:800}
+
+/* video */
+.video-wrap{display:grid;grid-template-columns:1.35fr .65fr;gap:25px;align-items:stretch}
+.video-card{min-height:390px;border-radius:24px;overflow:hidden;position:relative;background:url("https://images.pexels.com/photos/30289594/pexels-photo-30289594.jpeg?auto=compress&cs=tinysrgb&w=1800") center/cover}
+.video-card:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.25))}
+.video-content{position:absolute;z-index:2;left:35px;bottom:32px;color:#fff;max-width:550px}
+.video-content h3{font-size:32px;line-height:1.1;margin:8px 0}
+.play{position:absolute;z-index:3;top:30px;right:30px;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#111;font-size:21px}
+.highlight-list{display:grid;gap:14px}
+.highlight-item{border:1px solid #2b2b2b;background:#111;padding:20px;border-radius:16px;color:#fff}
+.highlight-item i{color:var(--gold);font-size:20px;margin-bottom:9px} .highlight-item h4{font-size:15px} .highlight-item p{font-size:12px;color:#aaa;margin-top:4px}
+
+/* before after */
+.ba-wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.ba-box{position:relative;height:410px;border-radius:22px;overflow:hidden;background:#111;user-select:none}
+.ba-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-after{clip-path:inset(0 50% 0 0)}
+.ba-label{position:absolute;top:15px;z-index:4;padding:6px 10px;border-radius:20px;background:rgba(0,0,0,.72);color:#fff;font-size:10px;font-weight:800}
+.ba-label.before{left:15px} .ba-label.after{right:15px}
+.ba-range{position:absolute;left:12px;right:12px;bottom:14px;z-index:5;width:calc(100% - 24px);accent-color:var(--gold)}
+.ba-copy h3{font-size:28px} .ba-copy p{color:#777;font-size:14px;margin:10px 0 20px}
+
+/* stories */
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.story{background:#fff;border:1px solid #e9e9e9;border-radius:18px;overflow:hidden}
+.story img{width:100%;height:230px;object-fit:cover} .story-body{padding:21px} .story-body small{color:var(--gold);font-weight:800} .story-body h3{font-size:18px;margin:5px 0 8px} .story-body p{font-size:12px;color:#777}
+
+/* packages */
+.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.package{background:#fff;border:1px solid #e5e5e5;border-radius:20px;padding:30px;position:relative;box-shadow:0 7px 24px rgba(0,0,0,.04)}
+.package.featured{border:2px solid var(--gold);transform:translateY(-7px)}
+.package-label{position:absolute;right:18px;top:18px;background:var(--gold);color:#111;padding:5px 10px;border-radius:20px;font-size:9px;font-weight:900}
+.package h3{font-size:21px} .price{font-size:32px;font-weight:900;margin:8px 0;color:#111} .price span{color:var(--gold)}
+.package ul{list-style:none;margin:18px 0} .package li{font-size:12px;color:#555;padding:8px 0;border-bottom:1px solid #eee} .package li i{color:#b08b10;margin-right:7px}
+
+/* frames */
+.frame-box{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.price-table{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.price-table th,.price-table td{padding:15px;text-align:left;border-bottom:1px solid #eee;font-size:13px}
+.price-table th{background:var(--black);color:var(--gold)} .price-table tr:last-child td{border:0}
+.frame-photo{height:380px;border-radius:22px;overflow:hidden} .frame-photo img{width:100%;height:100%;object-fit:cover}
+
+/* reviews */
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{border:1px solid #e7e7e7;padding:25px;border-radius:18px;background:#fff}
+.stars{color:#c69f24;letter-spacing:2px;margin-bottom:12px}
+.review p{font-size:13px;color:#555} .reviewer{margin-top:18px} .reviewer strong{display:block;font-size:13px} .reviewer small{color:#888}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:25px}
+.contact-info{background:var(--black);color:#fff;border-radius:22px;padding:35px;border:1px solid #252525}
+.contact-info h2{font-size:32px;margin-bottom:8px} .contact-info p{font-size:13px;color:#aaa}
+.contact-list{display:grid;gap:16px;margin-top:25px}
+.contact-row{display:flex;gap:12px;align-items:center;font-size:13px}
+.contact-row i{width:40px;height:40px;border-radius:11px;background:#171717;color:var(--gold);display:grid;place-items:center}
+.contact-row a:hover{color:var(--gold)}
+.contact-form{background:#fff;border-radius:22px;padding:30px;box-shadow:var(--shadow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group.full{grid-column:1/-1}
+.form-group label{display:block;font-size:11px;font-weight:800;color:#555;margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;border:1px solid #ddd;border-radius:10px;padding:12px;font-size:13px;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{min-height:105px;resize:vertical}
+.form-note{font-size:10px;color:#888;margin-top:8px}
+
+/* footer */
+footer{background:#050505;color:#fff;padding:65px 0 24px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:35px}
+.footer-brand p{font-size:12px;color:#999;margin-top:14px;max-width:350px}
+.footer-title{font-weight:800;margin-bottom:14px;color:var(--gold)}
+footer ul{list-style:none;display:grid;gap:9px} footer li,footer a{font-size:12px;color:#aaa} footer a:hover{color:var(--gold)}
+.socials{display:flex;gap:9px;margin-top:16px} .socials a{width:38px;height:38px;border:1px solid #292929;border-radius:10px;display:grid;place-items:center;color:#fff}
+.socials a:hover{background:var(--gold);color:#111;border-color:var(--gold)}
+.footer-bottom{border-top:1px solid #242424;margin-top:40px;padding-top:20px;text-align:center;color:#777;font-size:11px}
+
+/* floating */
+.float-wa{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:27px;z-index:900;box-shadow:0 10px 28px rgba(0,0,0,.25)}
+.top-btn{position:fixed;right:20px;bottom:90px;width:43px;height:43px;border:0;border-radius:12px;background:var(--black);color:var(--gold);display:none;place-items:center;z-index:900;cursor:pointer}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:3000;display:none;align-items:center;justify-content:center;padding:22px}
+.lightbox.show{display:flex}
+.lb-img{max-width:min(1100px,92vw);max-height:82vh;border-radius:12px;object-fit:contain}
+.lb-close,.lb-prev,.lb-next{position:absolute;border:0;background:rgba(255,255,255,.08);color:#fff;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:18px}
+.lb-close{top:18px;right:18px} .lb-prev{left:20px;top:50%;transform:translateY(-50%)} .lb-next{right:20px;top:50%;transform:translateY(-50%)}
+.lb-caption{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;font-size:12px;text-align:center;max-width:80%}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2500;display:none;align-items:center;justify-content:center;padding:18px}
+.modal.show{display:flex}
+.modal-box{width:min(620px,96vw);max-height:92vh;overflow:auto;background:#fff;border-radius:22px;padding:28px;position:relative}
+.modal-close{position:absolute;right:16px;top:14px;border:0;background:#eee;width:36px;height:36px;border-radius:50%;cursor:pointer}
+.modal-box h2{font-size:26px;margin-right:35px} .modal-box>p{font-size:12px;color:#777;margin:5px 0 20px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(25px);transition:.7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* responsive */
+@media(max-width:1050px){
+ .nav-links{gap:15px} .services-grid{grid-template-columns:repeat(2,1fr)}
+ .gallery-grid{grid-template-columns:repeat(3,1fr)} .gallery-card.wide{grid-column:span 2}
+ .footer-grid{grid-template-columns:1fr 1fr} .stats-grid{grid-template-columns:repeat(2,1fr)}
+ .stat:nth-child(2){border-right:0} .stat{border-bottom:1px solid #eee}
+}
+@media(max-width:800px){
+ header{border-top-width:6px} .navbar{height:74px}
+ .brand img{width:60px;height:51px} .brand-text{font-size:14px}
+ .menu-btn{display:block} .nav-links{display:none;position:absolute;left:4%;right:4%;top:80px;background:#fff;padding:18px;border-radius:16px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:12px}
+ .nav-links.open{display:flex} .nav-links a{padding:7px 0} .nav-call{text-align:center}
+ .hero{min-height:610px} .hero-content{padding:80px 0} .hero h1{letter-spacing:-1px}
+ .about-grid,.ba-wrap,.frame-box,.contact-grid,.video-wrap{grid-template-columns:1fr}
+ .about-photo{order:-1} .about-photo img{height:340px} .ba-box{height:350px}
+ .package-grid,.review-grid,.story-grid{grid-template-columns:1fr} .package.featured{transform:none}
+ .gallery-grid{grid-template-columns:1fr 1fr} .gallery-card.wide{grid-column:span 2}
+ .footer-grid{grid-template-columns:1fr 1fr} .form-grid{grid-template-columns:1fr} .form-group.full{grid-column:auto}
+}
+@media(max-width:480px){
+ .container{width:min(94%,1180px)} .section{padding:68px 0}
+ .brand-text .sub{font-size:8px} .brand-text{font-size:12px}
+ .brand img{width:55px;height:47px} .hero{min-height:650px}
+ .hero h1{font-size:40px} .hero-actions .btn{width:100%}
+ .hero-arrow{width:38px;height:38px} .hero-arrow.prev{left:10px} .hero-arrow.next{right:10px}
+ .stats-grid{grid-template-columns:1fr 1fr} .stat{padding:18px 7px} .stat strong{font-size:22px}
+ .services-grid{grid-template-columns:1fr} .gallery-grid{grid-template-columns:1fr}
+ .gallery-card.wide{grid-column:auto} .gallery-card{height:280px}
+ .checks{grid-template-columns:1fr} .footer-grid{grid-template-columns:1fr}
+ .video-card{min-height:360px} .video-content{left:22px;bottom:22px} .video-content h3{font-size:26px}
+ .float-wa{right:15px;bottom:15px} .top-btn{right:15px;bottom:83px}
+}
+@media(prefers-reduced-motion:reduce){
+ *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+ .reveal{opacity:1;transform:none}
+}
+
+/* NAVI premium additions */
+.moment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.moment-card{position:relative;min-height:230px;border-radius:20px;overflow:hidden;background:#111;border:1px solid #222}
+.moment-card img{width:100%;height:100%;object-fit:cover;transition:.55s}
+.moment-card:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.88))}
+.moment-card:hover img{transform:scale(1.08)}
+.moment-copy{position:absolute;z-index:2;left:18px;right:18px;bottom:17px;color:#fff}
+.moment-copy i{color:var(--gold);font-size:18px;margin-bottom:7px}
+.moment-copy h3{font-size:18px;line-height:1.15}.moment-copy p{font-size:11px;color:#ccc;margin-top:4px}
+.date-cta{position:relative;overflow:hidden;border:1px solid rgba(212,175,55,.35);border-radius:24px;background:linear-gradient(135deg,#050505,#151515);color:#fff;padding:42px}
+.date-cta:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-70px;top:-100px;border:1px solid rgba(212,175,55,.18);box-shadow:0 0 0 35px rgba(212,175,55,.04),0 0 0 70px rgba(212,175,55,.025)}
+.date-cta h3{font-size:clamp(26px,4vw,42px);line-height:1.1;max-width:650px}
+.date-cta p{color:#aaa;max-width:650px;margin:10px 0 22px;font-size:13px}
+.date-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.date-meta span{border:1px solid #333;border-radius:30px;padding:7px 11px;color:#ddd;font-size:10px}
+.journey{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;position:relative}
+.journey:before{content:"";position:absolute;left:8%;right:8%;top:28px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.journey-step{position:relative;z-index:1;text-align:center}
+.journey-icon{width:56px;height:56px;margin:0 auto 13px;border-radius:50%;display:grid;place-items:center;background:var(--black);color:var(--gold);border:1px solid #333;box-shadow:0 0 0 7px #fff}
+.journey-step h4{font-size:12px}.journey-step p{font-size:10px;color:#777;margin-top:3px}
+.client-box{border-radius:22px;background:#111;border:1px solid #292929;padding:28px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.client-box p{color:#aaa;font-size:12px;max-width:650px}
+.mobile-actions{display:none}
+@media(max-width:900px){.moment-grid{grid-template-columns:repeat(2,1fr)}.journey{grid-template-columns:repeat(3,1fr);row-gap:28px}.journey:before{display:none}}
+@media(max-width:600px){.moment-grid{grid-template-columns:1fr 1fr}.moment-card{min-height:210px}.date-cta{padding:28px 22px}.journey{grid-template-columns:repeat(2,1fr)}.client-box{align-items:flex-start;flex-direction:column}.mobile-actions{position:fixed;display:grid;grid-template-columns:1fr 1fr 1fr;left:10px;right:10px;bottom:10px;z-index:850;background:rgba(5,5,5,.96);border:1px solid #333;border-radius:15px;padding:6px;box-shadow:0 12px 35px rgba(0,0,0,.35)}.mobile-actions a,.mobile-actions button{border:0;background:transparent;color:#fff;padding:10px 5px;font-size:10px;font-weight:800;text-align:center}.mobile-actions i{display:block;color:var(--gold);font-size:15px;margin-bottom:3px}}
+
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-inner">
+    <img class="loader-logo" src="data:image/png;base64,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" alt="NAVI logo">
+    <div class="loader-line"><span></span></div>
+  </div>
+</div>
+
+<header>
+ <div class="container navbar">
+  <a class="brand" href="#home" aria-label="NAVI home">
+   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABECAYAAAAvMQN7AAAX4klEQVR42u2cd5xV1dX3v3ufdsv0Qhl6dWg2wsMQEQEVgxALGjvw+kSMgr1FY08UMTHG3sBYiIrGBlgANRYUBwQpht7LMJRpTLtz77nnrPePe6eR+LxRh/K8HxafO8PM7HvO2b+79lq/9Vv7HCUiwhH7waaPQHAEuCPAHQHu/2Mz/6c/FhYWMn36dD777DM2b95MPB4/KBelVOL7wU5bpmnSpUsXhg4dytixYykoKPj+a/y+rDpp0iSmTp160D9JBfz+VIMb391NOCWHQ5nzJ0yYwJNPPvmfAzd69GjmzZt3SC5WAdlGnPO7CU+ttw6J5zW1ESNG8N577/2/Y9ykSZMOGmhqv1e9TR8HN1x2fsPvlGry2m/sgbZ58+YxadKk/xm4wsLCg7o8R2V7LL/Lb0BDKdBa8e16ofXQveRm2KjkP4DdhZ354HKvAfSDZVOnTqWwsPD7gZs+ffpBXQbvlxksX+wzrKeDoRWmofn8Bo9dHhixWmaeKGgj4WaGViyaspPR08xmQKuDhOD+2DQD7rPPPjtoS1RrxUdXmkxeHibfqqb8nRTK/qroO7ArohTxapdjXnuOrfd2ovKTdO490WVNaR2lz4dwbI1paJRKIHgwwNsfm2bAbd68+aAAVl2xlI1PtqHg/F4oz+OB+3vy50fKMYafhZnbGpRgGgFE0ske25+vZ1WwN2Jw7yKLin1QNK0tZf/oweRzWpGRFsQ0DJRSB3T57o9Ns6xq2/YBBW3F/Z146+sSslOiPDMrwiYvQF3M46pjfUaeJpRu0twzM862CKQYkJcG1w9WRFo5jLtuIlnHPYFjGXRSEWa9NZS8Ey9DjKPp1X04xXuq8Hz/gGbgWCx28ICr97JbT9Dsjfps3Bzj0xIbQRpC/FE5iqIag03vdCTUuhXP3TGf/3NBF+whp+Gl/pJhgy5n5ZoiYtpCAaahCQZM7imoZcIZFn952CX/5yHOnxHD9+WAgXfQgFPA6b00R7eKUVEDf/1WE8dIcLP6QQKn5Lhk5AphE2Ysg1qlUUAAn+PTYPpLBUy+fREvrbNQCmzLYOeae5j9m1u56RPo0LU9C/65jT+cCFdPyKHt5ZV4BwDAAw6cSn753S9M+mTWccaU3nQ7toh9NTE8zwfA9wUUiAiGVlimJur6iYSpVLOyK+CYxOMerudjKMXmx33Om9qd5x++k54nXURKKIUUx2ZPaRnjxl/G07d+S5sBq6iKxFsUvKbA6QOxNFGQmWJy7akxRt9awIw3R9G+fRtCQRvbMjC0QmuVpBMJhNy4oJXCMDSObRJwbCzTRGtFbZ1LzPVAhHcujdL+SqGivIqzrngAzxUswyFDInQ2hQu71zDopI0Uze+WOMehKPJ/iLVJVwzuALbyyUvRjO6TTupZbVB5n3Ku8wuOKytj7nfCo1/aVNVEEcDzBNvUXDQwhEGUyipFVsigXaZDTjDGugrF7kqb9WV1LN4Y5/oTfa7+G/zlgWt56Ml32VO0g7z2/YgTZ/oEn763L2dU74707X80WQO+pvSjtmSeXIxqGhpaykFacqlmBoTRnTzqPAhbJk99swqlYyBLoHgG1YVrWbRwJxe/aBB1ExlQRLBVnGPDLr26KIb0hTE3ngpbl3HRpD18VRGmojaOL7Dt63PpMPDvRGMxtNZ07pPPptU7MPNGctH9g3kgfysvTPmIe99eQRxYcjMU/KXRN+RwXarldYpX1lvM2SiMOC7Oc2N6ctewvnixkYgdwrZAB4Js+PRpHMvAMjVaK6K+wcJKh7MuzyAlbFC5ZCUTbynhw+IAZTVxPF/QCh697A1irovWmmDYJlJWgeG7+OXrmLd6MUNHv0DhHk1chLTUNMS2GkJBS5dpuqXjW1XJAk7pBpe8LFS5QkTg2qG5XH76TLRhYRk+Oz6+me1z+pKWGsS2LLTWCBBdVMW24jihVIsh/cAXaUgWIjDubMgOOogIkZoosZoIJ6QNo0P2WHZN/hsb9tTyrZGFAHXROvw6F7WfktC0ylBAKGAcBgqwguuG/4xIXCOWxUmXdiM3LPRsp8hv6/Loc+txAor2nVPQea156LbTSUsNYpoGWms27PXJTFfo1CD7ahuPWT/Xz771qIjGuOWSEaQHLD59ZBgf75pKdsk8tA5g9foF0bIywkEb13XpN6pNUl1prqmoJoLCA4NTDi1wClj3e80xnRUrixKUY9H0LQzsq5lwVYD+RykGHOXT97KHCfVsi84ezlnj22IoH0TQWlFWpejTPYjO70tdVGFo3aCMKKX4dC38qrfBh0u2YJgWv5zwDnrrn7j4kjpOGNiTLnoj5d8to3PX7qx9LJtWpxSjVCKDJzK5TlKdhKCwb1E3Zq4uOcQepyAzN4VhA22K4gkBMjtdc3TfXJ6YHOHovg79eucQ/eBmVMcBCHHU5m9Y9vsqRHx838eNQ/4JPVBeDcUViWBuGBqVnPQH2wJsLY6zcvV6OndsjxuwUIFe3Pzc53xZuJRTBh+PaVmUFq1hyh/34jsBDENjGgaWZWKZBqahCdgGFauHsPPzrXyxyzr0SzV4TDuee70x8xiGIqN7Dr3yFJ1+EyWjR2vS+3VClXwHFQupXl/MV6sVPYNRRKCkXFAYVM5fybpdQjLtYlsmwYBFwLHYbmUwvB2sXLee4qoYQ069lZnT7+PjWdN5b/YcZl8N2cpnWWo7bjzFY/ua39EqJ51j+3XnrFGD2Dknn2d+FWfXR8t5fHotST5+aIBTQHaKYu1HmxjaOxFAtFIElULatkIbCjEszhq/EjodhZ/TD5X1AEU7Kti9K8YdwwVDQU1EWLtgFV9/tY35RUJBisvu7Q+y6+seFG19iG0bRrHqj4pJJwntHZ/L+yhSJcKM625nzs3juXVoBT8f1oVl66/krYf6M/n9OCcMf5ozTj2WuR+9xbSXbiTgKzLDiism7+HJFTa2oQ4dcAI8eIbPs+9Us8/XDWE4EvdRAYuqmkR59ckui7GD30JFdyPLz2VfWQXVEWFJiU/x093Zsk8xf1Ed326A7hmwoMrknVuu57yzlnLjoIkYZWUY2a14ubgnO/0AL2+02bCrDi9XUZXq0yE3htO1Lc/0f5ar7v6G9LQQhXe1Z8o531F+/yBq3r6ImS8s5c0vY3y+y2bpw22IeT+O3bVY5aD3xVlRDH51HEgQ6agnqC3b8b0kugpmbVf4sSCRDXvwXJdIrUfcUzz71kruOl/z3gINhpBmJyqLW94Nct5RtVhGHJGuWANyWbP9IwytEd+n2AvQPt0jN9tl0MD2zH3eY1c3xZffVLBz/sVMvOSvOI5w9iAh0z6Ji16ZT0ZqkB2zejFu4reIHGI6sq0c4h6khxqLc4VPxcZSNu1OiEgi4Hk+mZ2eZ3dxBRu2eFx8XQFuXIj7EIsYVMeFaBziydhTUhVjVYnPsOM1ZZ+/B6lnsvirQTi2iWEkalvlupz88yCpQ4Zw2s3H8+hCk98NdvnLtdN4dbWw2uzJV8557Kw9iarK1ylaOprfXLWYuVuMHz3fFvO4PXWKdhnC+ecFeXiFhyBsKxU2birFsBrXtCjwTIvL/1LNGccp7rqpkE45Cs8DZXk89+ojXHL2dfhNJPF/rFe8fmcbgukaJf/EJJtwyCIWi6MVjDvTJv+UvtR9No8pT5Tg+ybLV8f5VudSte2/wLdQre4l+vLRPDXG5Z9F8O5m6yeVYC3mce+v05zSW9E1J9pQFVZGFeu2eNh6v4AIFO61GT4mhGEoVhWDrQUlws4v7ufVGQW4XpJ3aYXl2BTcvJuNa3bz3V2voErX0SerDkG4ekAd+cP6MW3KCsxAiD9/a3J1gccdN2TQra6E2877gNn3zKTypQLmLozz6nLFjPU2x9j+TwtNLQXcliqNbYBz3NMNGti+iFBUAtF480aqCPgCA/67hs5Z0L2VIjUjSNTzMUUhvvDZzF4EAyY6WW6leh6bNkaYtXQ9srOMt976LYaC9p1SWVR2IYYZ4+a7tyDAyGMVs2ZX8FGJwSML4IkVHRj5RBq3zM3i1IJsRraFZVF9eAAHMOc74ewxE9HJo2oFJZWK3IwkZqpRr1OAtm1mfwcnHAUZRpTjLyigdF8MqqNYfc7k6au6NXSzVlfblJQpyqoV0ZJatsz8M+nxOs47byRP33ETnXNh2nqL1gFh4tsOE67No7riFqJ1X/Hh+7fy1ZLFvHrWPoo3lfBh8U8XmVoUuMEnBqmIeMy6OnHY0r1QVQetMpPCZZKoiCRXrMDCEotnPs0iNQRP3lFIuKA/XpWL1O1hzG8v5Ix8jWEkvG5zhcG+iDDqpi3s2Rth2k29OevyGaQHYdoHiWNOvkbormqZPKWYNQ88yOwrBvPfwycyY3xbHpovzFhtEfcOMz3OUHB0lsvwn/+Mxz5Ywahcl5RseO6FP3HMmPvYsivSoMFJk3iXHRKe+6XP31f47KgQKsoMFm65DETjL/6EmqhHuwt2UBuJcklfqIjA+OGarUXCx2uFQZ3h8YUW3XIVZnWMLTqNrIww0WiM0n11+L4Qj/t0ytGs3ekefnqcD9xxnuKhdxZTsXkmVobgifD6Azex4rsr6NkxvSFTqiYCWWlE8ezXQk1M8AVa53ic87PnULWluDGDTSv3ULF9PplpAbLTFLapqKuB8oiQ5sDXuwNUxWDFdpcnfmNTeFWUxQ+6XNG7jHH5Ea7rX8txaXWsK3ZbbK4t5nH3js8iUp3NBx+vwfd8SqoSuPRMg1ofYnGwTRjSK5PHltXiJ4ld02iTH4oxoBOkODB9ucZV8Mkjl9KrzSLK91bgxj06XjCXQT360a+9IicFxp+h6XOzR1rIZtUTGQy7Zg976xTZNgQdYf0+UJaNLz+963XAulyN3qQY1DqGY8Kd5zqMflajVEKsrF82iVjXCJwkRctjWsWZfAaYUTj9VQuFol97h7FHVfLmEouUMMzZ7HJ+L+icDTfcFKTNOS5/KHB5bFWQvfu8/WRyaYir/yv6qo6luX1wlF5tFCNv7MHJl/lsLSqnuiaKG/cSZBjBT2YKadqLzYuR3yfE7/46g9yO5zZsbxAgLWxhVlXx6xM1rYPCh6tg6b4geyqbtgIbm90iglL/S4Br2hstfT0Fp2cP/K5TWHndaEa9bVJdG8MXwW/CQbVWNN3jqJPuKwjiC6apmXOVy52vevxjq/DGrxVDBmbR/qrKpI8359jNOlv7hYTDtq+qtELpxFRaX1zLdeMXE5l+NiXxGrZuWcBbv6rDsRI0o1HGBtPUmKZO1qCKcNCgW9swJbOFc7vVMeXNOEt2QetMh4H9TR59pqLZZhuhSV9BNYExqfq2ZLOmZWNcPWjJC9WqSVdehPZ2lIEdhbJaMNDMKHwXWTCOKp3G1y9tJ8UwOfYkh+A5x2C6Ftue/Jy/LxLKIvC3JVDi2cljwT0DPf603KamzmvWvlJNvu7vZ/Uz/bE3Ex2QpVoPmlYKbehmn279p53YTSTEozFuv1CzZqlHbgrk58HJA0y6jDga0T47PlrJ50vjvLFI+GSbQhlWQ9e/vgIpSHUprLISWymaXIXSTdSZ5IdmaJ3cjCN4np+Iq4cDcPWTMg1NKGgTCjnUJJOA7wumoRtiWNzzibleQxYFMA1FpzZBUIqK6jg1kTjRmNdYYZDYkWkYuuG75/m4cR8vCZxZHx6EZPwUlFIEAxbhUICszFT2llRQUVmb2E5xuMS4/0pzKS+6i6KiV1i/6SsGHtsRI7k/pLyymuLtz7Bj8TV40brGmJRsK8R9obg0xic3eGx4KkzAMRs7Uklvzkm1uP34OnZPz2bn3HaMzIvQu0saKglqNFZH6aax3P0zl16d0lAKLFNzYftqNm14msVL57Fw2ihs1UIkWJqYZVk/+mXbljx8ppLbR2dIbNVIqX0jT47tmSup4YCEQwFZ/l5H2fWgKeGgIwHHloBji5N8hYKOzBofkAsGWBLf/EuJLsqX1JSAhPYbGww4MrE/UvdhvpQ8myUp4YAEA7YEA7Yc1TFNlvzWkHCo8T3BgCPhoCN7Xm4n7s4xMn8iYts/fo5NrUWz6hUXteWPH+7j1BFzeHvuLu49po6MFCOxlctvTWk5DfGlKW/r3c5m2BnZ/H2xC60K0J2Oo22W0zCufqwvwovLFXJUPunjbuMfV5sNAX/FV49y2VSPeFwaPNkXwfOFivJS/G++obLucNwCIaBND9My+WKH8NpHPlZeLWumhDmmSwCkmuIyaRa36vnbSxfGyDt/J07A4ew+d+IVFrLsPqNZ9qtf3r5h8cLVM2HHPI698m60gtO7+mwpfIpV1VaC9zWpRkRgx44Y/1y8k+3lLQec2ZIeV/j5bkQsLNvi451xTir0OOWcTF48fx3V23yqo/XASQPJLX4xxLz3ynnsTAvb8UlPNVi4YDtl5T7XDjB4ZJFq5qEC3PFlgDN3b2f7h7ex5g8mmzd7DLtsWYKvSXMvRcGuPT5rqxTFZUlax0/fudRywCl4cyEYGnwPRJs8sha+HL+eYf2E1UXVnNilqQcpTEPx4vQKrnsfLKvRs05oG+e0vorb77uRR0Y83MSDEn+vrfO4fsI6LhkqZAZM3pjvURrR+9WoTbKhKHZXKDqkyPeOOTQNaQXbX2sPAtue6UGnnAAIlNTCglKL2UsUZTWCFdIIgkIxvE+YG3sriis11w5q7DalhgxuO9MgKywUvv5Hqr4YSasMJ8nLGgGcudHk0feF3HYG09ZaSS+TZvzRNjWVn2awtVj49QiTsROymTjEapEK4ifzuKb3W0l91ajYLz41Z/L1e9bqxzRdOg0FfWOd3vBz/TmQ5sdqPE7zc9f/rJrWr9L82n6I97UYj9vyVCaWITiWwnVd/na+Q4Z2icViWIbi6DQXrRWvXSo8OSbOhocCtLXjvHyRSabpMmeiRUrAxFJ+giQrHxWP4boxcuwYhoY07bJzZn+eOkcRMuNkpyU8ZveyX6OUYvvKG5kzuQuGVpTP703Q8vHjLp4bB3E5r5tP+QsBhnX2efVczTPnKNoEQRNv2j86MDxu9MBM+WZ6a1n4VLp8+VRX+fiZY2RgJ0s2/DEsQVtJwLGlQ44tbTIdefe2PGmbYYtjKrmgpxbbtmTqpY44jiUL70uT1LAjHbJscWxLXr8mTRxLNXCxZ88xxXFs6dImKK1DSMCxpX87Uyrf7yahoCOtswLSt2NIggFbrhhsSTjoSHZAy7XD08WxLUkPKCl8pJV0zNQSDtkSDjpS+nKW7Hk5VbLTA5IadqRNVlDSwra8Ps4R27Zk4bRe8t3b+bL2zW6ydt4wefj6zv8Rj2u2VEOh0H98F7RSEPBdMi2FlWpQUelT5Qq2EloFFbvjFrb2qYop2tkuxa5F95DLtiqIkOj698uEUrEpr3QJpjh0tGNsi9lkmx47ahUntorz+S6DHuE4qyuhcxj2uAaD8zzmbwNXW5zUSfh0o4vjOLhxH5Qiy4qTZhmURT2qPJMOgRg7qsFHJbZlKOgahm3R/3yLl2ma1NbW/vsY16dPH9avX09LJYymAX3/mPivgxsHKGBiR48nt+omkqRqruh+7wpqfs6Wus+hR48erFy58t/TkaFDh7YIcCEroUK4nqCTk7QVZAYUOSkKWwlpQUhVjTcmhSyoiis+3+7TNQQXjlEsnA4ry3yG5EHAVASVEPEV0ZhQ50NpnaLKhYgLtXGhJp5odCtAG6ANRcg2KI/8dOCGDh36/Vm1sLCQIUOGcCCtqYy9v6Td1EuvPtrl8RVWYzY9xM/j+eKLL5o93KBZVi0oKGDChAk/6IBpQc261/IalNwvbnPQChbcnoVWJMVMWPJUTwytmHVHVsN7L2/C307u5nPVaenMvrMDCjh+aA4KyM8R5k5uzYeTc1k8tdu/bQ51buXw5esjePt3uYzIN1j1Sg+UgqWP52GZiXE3nBnk7nOz6RD84ZLShAkT/vWJEPJvbNSoUf+xYpCXouX+C7Pk+bFKts1tK4vuNsSyLJl2oSG2bUk4aIttW/KLLkjAtiQ1ZDe898oC1fD/D64JybC+YemXoSTgWJIWdsSxLemeqhsUje5Z+l8UGcuy5PZhSn47tpM8ewlyck8tY/olzhlQSEowMW721VrGDbIkP1v9IEVk1KhR/w4iOaSPzwjZUBvjsLUf/PiMpjHvUDyw5VBZizyw5YgdLD3uCHBH7AhwR4A7/Oz/Aji0acsbJ/ZGAAAAAElFTkSuQmCC" alt="NAVI Digital High Tech Studio logo">
+   <div class="brand-text"><span class="top">NAVI DIGITAL HIGH TECH</span><span class="sub">STUDIO & VIDEOS</span></div>
+  </a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+   <a href="#home" class="active">HOME</a><a href="#about">ABOUT US</a><a href="#services">SERVICES</a><a href="#gallery">GALLERY</a><a href="#packages">PACKAGES</a><a href="#reviews">REVIEWS</a><a href="#contact">CONTACT US</a>
+   <a class="nav-call" href="tel:+919360627826"><i class="fa-solid fa-phone"></i> 9360627826</a>
+  </nav>
+ </div>
+</header>
+
+<main id="home">
+<section class="hero" aria-label="NAVI hero slideshow">
+ <div class="hero-slides">
+  <div class="hero-slide active"><img src="https://images.pexels.com/photos/35441123/pexels-photo-35441123.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Tamil Nadu traditional wedding photography" loading="eager" onerror="this.style.opacity=0"></div><div class="hero-slide "><img src="https://images.pexels.com/photos/30458529/pexels-photo-30458529.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Tamil Nadu traditional wedding photography" loading="lazy" onerror="this.style.opacity=0"></div><div class="hero-slide "><img src="https://images.pexels.com/photos/30458515/pexels-photo-30458515.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Tamil Nadu traditional wedding photography" loading="lazy" onerror="this.style.opacity=0"></div><div class="hero-slide "><img src="https://images.pexels.com/photos/30289594/pexels-photo-30289594.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Tamil Nadu traditional wedding photography" loading="lazy" onerror="this.style.opacity=0"></div><div class="hero-slide "><img src="https://images.pexels.com/photos/30458557/pexels-photo-30458557.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Tamil Nadu traditional wedding photography" loading="lazy" onerror="this.style.opacity=0"></div>
+ </div>
+ <div class="container hero-content reveal visible">
+  <div class="badge"><i class="fa-solid fa-camera"></i> TAMIL NADU • WEDDING • EVENTS</div>
+  <h1>CAPTURING <span>MEMORIES</span><br>CREATING STORIES</h1>
+  <p>Professional photography, videography, album designing, printing, framing and event coverage — created with a strong Tamil culture feel.</p>
+  <div class="hero-actions">
+   <button class="btn btn-gold" data-open-book><i class="fa-solid fa-calendar-check"></i> BOOK NOW</button>
+   <a class="btn btn-wa" href="https://wa.me/919360627826?text=Hello%20NAVI%20Studio%2C%20I%20would%20like%20to%20know%20about%20your%20services." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WHATSAPP</a>
+  </div>
+  <div class="hero-points"><span><i class="fa-solid fa-camera"></i> Photography</span><span><i class="fa-solid fa-video"></i> Videography</span><span><i class="fa-solid fa-print"></i> Printing</span><span><i class="fa-solid fa-image"></i> Framing</span></div>
+ </div>
+ <button class="hero-arrow prev" id="heroPrev" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+ <button class="hero-arrow next" id="heroNext" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+ <div class="hero-dots" id="heroDots" aria-label="Slideshow controls"></div>
+</section>
+
+<section class="stats">
+ <div class="container">
+  <div class="stats-grid">
+   <div class="stat"><strong>15<span>+</span></strong><small>Studio Services</small></div>
+   <div class="stat"><strong>4K</strong><small>Video Ready</small></div>
+   <div class="stat"><strong>25<span>+</span></strong><small>Demo Gallery Works</small></div>
+   <div class="stat"><strong>100<span>%</span></strong><small>Personal Attention</small></div>
+  </div>
+ </div>
+</section>
+
+
+<section class="section dark" id="moments">
+ <div class="container">
+  <div class="section-title reveal">
+   <span class="eyebrow">CHOOSE YOUR MOMENT</span>
+   <h2>ONE STUDIO. <span class="gold">EVERY MEMORY.</span></h2>
+   <p>Choose the kind of story you want NAVI to capture.</p>
+  </div>
+  <div class="moment-grid">
+   <article class="moment-card reveal"><img src="https://images.pexels.com/photos/35441123/pexels-photo-35441123.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Traditional wedding moment" loading="lazy"><div class="moment-copy"><i class="fa-solid fa-ring"></i><h3>Wedding</h3><p>Tradition, emotion & celebration.</p></div></article>
+   <article class="moment-card reveal"><img src="https://images.pexels.com/photos/30458529/pexels-photo-30458529.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Bridal portrait" loading="lazy"><div class="moment-copy"><i class="fa-solid fa-heart"></i><h3>Pre-Wedding</h3><p>Natural couple portraits & stories.</p></div></article>
+   <article class="moment-card reveal"><img src="https://images.pexels.com/photos/30458510/pexels-photo-30458510.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Traditional portrait" loading="lazy"><div class="moment-copy"><i class="fa-solid fa-user"></i><h3>Portraits</h3><p>Studio, family & personal portraits.</p></div></article>
+   <article class="moment-card reveal"><img src="https://images.pexels.com/photos/30289594/pexels-photo-30289594.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Event photography" loading="lazy"><div class="moment-copy"><i class="fa-solid fa-champagne-glasses"></i><h3>Events</h3><p>Functions, engagements & family days.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="services">
+ <div class="container">
+  <div class="section-title reveal"><span class="eyebrow">WHAT WE OFFER</span><h2>OUR <span class="gold">SERVICES</span></h2><p>From a passport photo to a complete wedding story, NAVI brings photography, video and print memories together.</p></div>
+  <div class="services-grid">
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-camera-retro"></i></div><h3>Wedding Photography</h3><p>Traditional, candid and emotional wedding moments with a South Indian feel.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-video"></i></div><h3>Wedding Videography</h3><p>Full event coverage, cinematic highlights and family memories.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-heart"></i></div><h3>Pre-Wedding</h3><p>Couple portraits, creative poses and story-based sessions.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-users"></i></div><h3>Family / Events</h3><p>Birthdays, engagements, functions and important family occasions.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-user"></i></div><h3>Portrait Studio</h3><p>Professional portrait and model-style studio sessions.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-id-card"></i></div><h3>Passport Photos</h3><p>Clean studio passport photos and quick print service.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-print"></i></div><h3>Photo Printing</h3><p>Quality prints for personal, wedding and family requirements.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-image"></i></div><h3>Frames</h3><p>Custom frame sizes for portraits, weddings and gifts.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-book-open"></i></div><h3>Album Designing</h3><p>Story-focused album layouts and premium finishing options.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-helicopter"></i></div><h3>Drone Services</h3><p>Aerial visuals for eligible events, subject to local rules and availability.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>Photo Editing</h3><p>Colour correction, retouching and creative enhancement.</p></article>
+   <article class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-hard-drive"></i></div><h3>Digital Delivery</h3><p>Organised digital delivery for selected photos and event videos.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section dark" id="about">
+ <div class="container about-grid">
+  <div class="about-photo reveal"><img src="https://images.pexels.com/photos/30458510/pexels-photo-30458510.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="South Indian bride in traditional saree" loading="lazy"></div>
+  <div class="about-copy reveal"><span class="eyebrow">ABOUT NAVI</span><h2>Your Moments. <span class="gold">Your Culture.</span> Your Story.</h2><p>NAVI DIGITAL HIGH TECH STUDIO & VIDEOS is built around professional photography, videography, printing, framing and album services with a special focus on Tamil Nadu and South Indian celebrations.</p>
+   <div class="checks"><div class="check"><i class="fa-solid fa-check"></i> Traditional wedding coverage</div><div class="check"><i class="fa-solid fa-check"></i> Candid & posed portraits</div><div class="check"><i class="fa-solid fa-check"></i> Album designing</div><div class="check"><i class="fa-solid fa-check"></i> Photo printing & frames</div><div class="check"><i class="fa-solid fa-check"></i> Family & event coverage</div><div class="check"><i class="fa-solid fa-check"></i> Customer-friendly service</div></div>
+   <div class="hero-actions"><button class="btn btn-gold" data-open-book>PLAN YOUR EVENT</button><a class="btn btn-dark" href="tel:+919360627826"><i class="fa-solid fa-phone"></i> CALL NAVI</a></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="gallery">
+ <div class="container">
+  <div class="section-title reveal"><span class="eyebrow">OUR WORK</span><h2>DEMO <span class="gold">GALLERY</span></h2><p>South Indian and Tamil Nadu-inspired visual references for the studio portfolio.</p></div>
+  <div class="gallery-tabs" role="tablist">
+   <button class="active" data-filter="all">ALL</button><button data-filter="wedding">WEDDING</button><button data-filter="portrait">PORTRAIT</button><button data-filter="culture">CULTURE</button><button data-filter="event">EVENTS</button><button data-filter="frames">FRAMES</button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Traditional Wedding">
+        <img src="https://images.pexels.com/photos/35441123/pexels-photo-35441123.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Traditional Wedding - South Indian Wedding" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Traditional Wedding</strong><small>South Indian Wedding</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="portrait" tabindex="0" role="button" aria-label="Open Bridal Portrait">
+        <img src="https://images.pexels.com/photos/30458529/pexels-photo-30458529.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bridal Portrait - Tamil Nadu Saree" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Bridal Portrait</strong><small>Tamil Nadu Saree</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Traditional Bride">
+        <img src="https://images.pexels.com/photos/30458515/pexels-photo-30458515.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Traditional Bride - South Indian Bridal" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Traditional Bride</strong><small>South Indian Bridal</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="culture" tabindex="0" role="button" aria-label="Open Tamil Nadu Wedding">
+        <img src="https://images.pexels.com/photos/30289594/pexels-photo-30289594.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Tamil Nadu Wedding - Cultural Celebration" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Tamil Nadu Wedding</strong><small>Cultural Celebration</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Wedding Couple">
+        <img src="https://images.pexels.com/photos/30458557/pexels-photo-30458557.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Wedding Couple - Chennai Style" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Wedding Couple</strong><small>Chennai Style</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Bride &amp; Groom">
+        <img src="https://images.pexels.com/photos/14311014/pexels-photo-14311014.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bride &amp; Groom - Traditional Portrait" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Bride &amp; Groom</strong><small>Traditional Portrait</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Wedding Embrace">
+        <img src="https://images.pexels.com/photos/35441106/pexels-photo-35441106.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Wedding Embrace - Candid Couple" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Wedding Embrace</strong><small>Candid Couple</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="culture" tabindex="0" role="button" aria-label="Open Bridal Jewellery">
+        <img src="https://images.pexels.com/photos/20493946/pexels-photo-20493946.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bridal Jewellery - Gold &amp; Tradition" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Bridal Jewellery</strong><small>Gold &amp; Tradition</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Wedding Story">
+        <img src="https://images.pexels.com/photos/30289596/pexels-photo-30289596.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Wedding Story - Bokeh Celebration" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Wedding Story</strong><small>Bokeh Celebration</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="portrait" tabindex="0" role="button" aria-label="Open Traditional Bride">
+        <img src="https://images.pexels.com/photos/30458521/pexels-photo-30458521.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Traditional Bride - Cultural Portrait" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Traditional Bride</strong><small>Cultural Portrait</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="portrait" tabindex="0" role="button" aria-label="Open Bridal Elegance">
+        <img src="https://images.pexels.com/photos/30458542/pexels-photo-30458542.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bridal Elegance - South Indian Portrait" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Bridal Elegance</strong><small>South Indian Portrait</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="portrait" tabindex="0" role="button" aria-label="Open Bride Portrait">
+        <img src="https://images.pexels.com/photos/30458566/pexels-photo-30458566.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bride Portrait - Traditional Attire" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Bride Portrait</strong><small>Traditional Attire</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="culture" tabindex="0" role="button" aria-label="Open Festive Bride">
+        <img src="https://images.pexels.com/photos/30458548/pexels-photo-30458548.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Festive Bride - Tamil Culture" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Festive Bride</strong><small>Tamil Culture</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="culture" tabindex="0" role="button" aria-label="Open Garden Portrait">
+        <img src="https://images.pexels.com/photos/30458552/pexels-photo-30458552.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Garden Portrait - Traditional Look" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Garden Portrait</strong><small>Traditional Look</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="culture" tabindex="0" role="button" aria-label="Open Kanniyakumari Bride">
+        <img src="https://images.pexels.com/photos/30685785/pexels-photo-30685785.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Kanniyakumari Bride - Tamil Nadu Culture" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Kanniyakumari Bride</strong><small>Tamil Nadu Culture</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="event" tabindex="0" role="button" aria-label="Open Wedding Ceremony">
+        <img src="https://images.pexels.com/photos/30458551/pexels-photo-30458551.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Wedding Ceremony - Chennai Celebration" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Wedding Ceremony</strong><small>Chennai Celebration</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Wedding Couple">
+        <img src="https://images.pexels.com/photos/35441107/pexels-photo-35441107.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Wedding Couple - Traditional Moment" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Wedding Couple</strong><small>Traditional Moment</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Candid Wedding">
+        <img src="https://images.pexels.com/photos/35441107/pexels-photo-35441107.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Candid Wedding - South Indian Couple" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Candid Wedding</strong><small>South Indian Couple</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Wedding Day">
+        <img src="https://images.pexels.com/photos/35441120/pexels-photo-35441120.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Wedding Day - Traditional Couple" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Wedding Day</strong><small>Traditional Couple</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="event" tabindex="0" role="button" aria-label="Open Family Celebration">
+        <img src="https://images.pexels.com/photos/35441121/pexels-photo-35441121.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Family Celebration - Wedding Event" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Family Celebration</strong><small>Wedding Event</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="wedding" tabindex="0" role="button" aria-label="Open Couple Portrait">
+        <img src="https://images.pexels.com/photos/30458562/pexels-photo-30458562.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Couple Portrait - South Indian Wedding" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Couple Portrait</strong><small>South Indian Wedding</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="prewedding" tabindex="0" role="button" aria-label="Open Couple Session">
+        <img src="https://images.pexels.com/photos/30458561/pexels-photo-30458561.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Couple Session - Chennai Portrait" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Couple Session</strong><small>Chennai Portrait</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="portrait" tabindex="0" role="button" aria-label="Open Bridal Walk">
+        <img src="https://images.pexels.com/photos/30458543/pexels-photo-30458543.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bridal Walk - Outdoor Saree Portrait" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Bridal Walk</strong><small>Outdoor Saree Portrait</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="culture" tabindex="0" role="button" aria-label="Open Traditional Saree">
+        <img src="https://images.pexels.com/photos/30458510/pexels-photo-30458510.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Traditional Saree - Tamil Nadu Portrait" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Traditional Saree</strong><small>Tamil Nadu Portrait</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article>
+      <article class="gallery-card" data-cat="frames" tabindex="0" role="button" aria-label="Open Heritage Portrait">
+        <img src="https://images.pexels.com/photos/30458512/pexels-photo-30458512.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Heritage Portrait - Frame Collection" loading="lazy"
+             onerror="this.closest('.gallery-card').classList.add('img-error')">
+        <div class="gallery-overlay"><div><strong>Heritage Portrait</strong><small>Frame Collection</small></div><span class="view-icon"><i class="fa-solid fa-expand"></i></span></div>
+      </article></div>
+ </div>
+</section>
+
+<section class="section soft" id="highlights">
+ <div class="container">
+  <div class="section-title reveal"><span class="eyebrow">VIDEO & HIGHLIGHTS</span><h2>TURN YOUR DAY INTO A <span class="gold">STORY</span></h2><p>Highlight films, ceremony coverage and cinematic moments designed around your event.</p></div>
+  <div class="video-wrap">
+   <div class="video-card reveal">
+    <a class="play" href="https://www.youtube.com/results?search_query=South+Indian+wedding+cinematic" target="_blank" rel="noopener" aria-label="Open wedding video examples"><i class="fa-solid fa-play"></i></a>
+    <div class="video-content"><small class="gold">NAVI VIDEO HIGHLIGHTS</small><h3>From rituals to laughter — preserve every important moment.</h3><p>Demo showcase. Your own NAVI highlight video can be linked here later.</p></div>
+   </div>
+   <div class="highlight-list">
+    <article class="highlight-item reveal"><i class="fa-solid fa-film"></i><h4>Cinematic Highlights</h4><p>Short, emotional highlight edits for sharing.</p></article>
+    <article class="highlight-item reveal"><i class="fa-solid fa-music"></i><h4>Story-led Editing</h4><p>Music, transitions and pacing shaped around the event.</p></article>
+    <article class="highlight-item reveal"><i class="fa-solid fa-pen-nib"></i><h4>Custom Titles</h4><p>Names, dates and event details can be included.</p></article>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section dark" id="before-after">
+ <div class="container ba-wrap">
+  <div class="ba-box reveal">
+   <img src="https://images.pexels.com/photos/30458529/pexels-photo-30458529.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Before and after demo original" class="ba-before">
+   <img src="https://images.pexels.com/photos/30458510/pexels-photo-30458510.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="After edit demo" class="ba-after" id="baAfter">
+   <span class="ba-label before">BEFORE</span><span class="ba-label after">AFTER</span>
+   <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Before after comparison">
+  </div>
+  <div class="ba-copy reveal"><span class="eyebrow">EDITING</span><h3>BEFORE / <span class="gold">AFTER</span></h3><p>Demo comparison area for colour correction, retouching and creative finishing. Replace these two demo images with your own NAVI work later.</p><button class="btn btn-gold" data-open-book>ASK FOR EDITING</button></div>
+ </div>
+</section>
+
+<section class="section" id="stories">
+ <div class="container">
+  <div class="section-title reveal"><span class="eyebrow">STORIES / MEMORIES</span><h2>EVERY MOMENT HAS A <span class="gold">STORY</span></h2><p>A few example story blocks to show how your website can present different occasions.</p></div>
+  <div class="story-grid">
+   <article class="story reveal"><img src="https://images.pexels.com/photos/35441121/pexels-photo-35441121.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Tamil wedding family celebration" loading="lazy"><div class="story-body"><small>WEDDING</small><h3>The Day Two Families Celebrate</h3><p>From the first ritual to the final family portrait, keep the complete story together.</p></div></article>
+   <article class="story reveal"><img src="https://images.pexels.com/photos/30458548/pexels-photo-30458548.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Traditional Tamil culture portrait" loading="lazy"><div class="story-body"><small>TRADITION</small><h3>Culture In Every Frame</h3><p>Traditional attire, jewellery, rituals and natural expressions become lasting memories.</p></div></article>
+   <article class="story reveal"><img src="https://images.pexels.com/photos/30289594/pexels-photo-30289594.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Tamil Nadu wedding celebration" loading="lazy"><div class="story-body"><small>EVENT</small><h3>Celebrate. Capture. Remember.</h3><p>Functions, engagements and family gatherings deserve the same attention to detail.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section soft" id="packages">
+ <div class="container">
+  <div class="section-title reveal"><span class="eyebrow">WEDDING PACKAGES</span><h2>CHOOSE YOUR <span class="gold">STORY</span></h2><p>Sample starting packages. Final quotation can be customised according to your event requirements.</p></div>
+  <div class="package-grid">
+   <article class="package reveal"><h3>Classic</h3><div class="price"><span>₹25,000</span>+</div><ul><li><i class="fa-solid fa-check"></i> Photography coverage</li><li><i class="fa-solid fa-check"></i> Basic editing</li><li><i class="fa-solid fa-check"></i> Album design</li><li><i class="fa-solid fa-check"></i> Selected prints</li><li><i class="fa-solid fa-check"></i> Digital delivery</li></ul><button class="btn btn-dark" data-open-book>ENQUIRE</button></article>
+   <article class="package featured reveal"><span class="package-label">POPULAR</span><h3>Premium</h3><div class="price"><span>₹40,000</span>+</div><ul><li><i class="fa-solid fa-check"></i> Photography + Videography</li><li><i class="fa-solid fa-check"></i> Candid moments</li><li><i class="fa-solid fa-check"></i> Premium album design</li><li><i class="fa-solid fa-check"></i> Prints + frame</li><li><i class="fa-solid fa-check"></i> Highlight video</li></ul><button class="btn btn-gold" data-open-book>ENQUIRE</button></article>
+   <article class="package reveal"><h3>Signature</h3><div class="price"><span>₹60,000</span>+</div><ul><li><i class="fa-solid fa-check"></i> Complete event coverage</li><li><i class="fa-solid fa-check"></i> Premium video highlights</li><li><i class="fa-solid fa-check"></i> Premium album</li><li><i class="fa-solid fa-check"></i> Frame & selected prints</li><li><i class="fa-solid fa-check"></i> Custom deliverables</li></ul><button class="btn btn-dark" data-open-book>ENQUIRE</button></article>
+  </div>
+ </div>
+</section>
+
+
+<section class="section soft">
+ <div class="container">
+  <div class="date-cta reveal">
+   <span class="eyebrow">YOUR DATE • YOUR STORY</span>
+   <h3>Planning a special day? <span class="gold">Check your event details with NAVI.</span></h3>
+   <p>Send your event date, town and preferred service. We will prepare the enquiry in WhatsApp so you can continue the conversation easily.</p>
+   <button class="btn btn-gold" data-open-book><i class="fa-solid fa-calendar-check"></i> CHECK YOUR EVENT DATE</button>
+   <div class="date-meta"><span><i class="fa-solid fa-camera"></i> Photography</span><span><i class="fa-solid fa-video"></i> Videography</span><span><i class="fa-solid fa-book-open"></i> Albums</span><span><i class="fa-solid fa-print"></i> Frames & Prints</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="frames">
+ <div class="container">
+  <div class="section-title reveal"><span class="eyebrow">PRINTING & FRAMING</span><h2>TURN PHOTOS INTO <span class="gold">MEMORIES</span></h2><p>Sample starting prices for common frame sizes.</p></div>
+  <div class="frame-box">
+   <div class="reveal"><table class="price-table"><thead><tr><th>Frame Size</th><th>Starting Price</th></tr></thead><tbody><tr><td>12 × 8</td><td>₹350</td></tr><tr><td>12 × 10</td><td>₹550</td></tr><tr><td>12 × 15</td><td>₹900</td></tr><tr><td>Other Sizes</td><td>Contact NAVI</td></tr></tbody></table><p style="font-size:11px;color:#888;margin-top:10px">Prices shown are sample starting prices and may vary by material, finish and print.</p></div>
+   <div class="frame-photo reveal"><img src="https://images.pexels.com/photos/30458542/pexels-photo-30458542.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Traditional portrait frame display" loading="lazy"></div>
+  </div>
+ </div>
+</section>
+
+<section class="section soft" id="reviews">
+ <div class="container">
+  <div class="section-title reveal"><span class="eyebrow">CLIENT EXPERIENCE</span><h2>WHAT CUSTOMERS <span class="gold">SAY</span></h2><p>Demo testimonials for the website layout. Replace them with real customer reviews after launch.</p></div>
+  <div class="review-grid">
+   <article class="review reveal"><div class="stars">★★★★★</div><p>“Beautiful presentation and a friendly photography experience. The traditional wedding moments were captured naturally.”</p><div class="reviewer"><strong>Demo Wedding Customer</strong><small>Wedding Event</small></div></article>
+   <article class="review reveal"><div class="stars">★★★★★</div><p>“Good attention to detail and a clean album design. Looking forward to using NAVI for future family events.”</p><div class="reviewer"><strong>Demo Family Customer</strong><small>Family Event</small></div></article>
+   <article class="review reveal"><div class="stars">★★★★★</div><p>“The portrait session was comfortable and the final photos had a professional look.”</p><div class="reviewer"><strong>Demo Portrait Customer</strong><small>Portrait Session</small></div></article>
+  </div>
+ </div>
+</section>
+
+
+<section class="section">
+ <div class="container">
+  <div class="section-title reveal"><span class="eyebrow">THE NAVI EXPERIENCE</span><h2>MEMORY <span class="gold">JOURNEY</span></h2><p>From planning to the final print, every stage is part of the story.</p></div>
+  <div class="journey">
+   <div class="journey-step reveal"><div class="journey-icon"><i class="fa-solid fa-calendar-check"></i></div><h4>PLAN</h4><p>Discuss your event.</p></div>
+   <div class="journey-step reveal"><div class="journey-icon"><i class="fa-solid fa-camera"></i></div><h4>CAPTURE</h4><p>Photograph the moments.</p></div>
+   <div class="journey-step reveal"><div class="journey-icon"><i class="fa-solid fa-video"></i></div><h4>RECORD</h4><p>Preserve the moving story.</p></div>
+   <div class="journey-step reveal"><div class="journey-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h4>EDIT</h4><p>Polish the final visuals.</p></div>
+   <div class="journey-step reveal"><div class="journey-icon"><i class="fa-solid fa-book-open"></i></div><h4>DESIGN</h4><p>Create albums & layouts.</p></div>
+   <div class="journey-step reveal"><div class="journey-icon"><i class="fa-solid fa-heart"></i></div><h4>CHERISH</h4><p>Keep it for years.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="contact">
+ <div class="container contact-grid">
+  <div class="contact-info reveal"><span class="eyebrow">LET'S CREATE</span><h2>Plan Your <span class="gold">Special Moment</span></h2><p>Send your event details. NAVI can discuss photography, video, album, printing and framing requirements.</p>
+   <div class="contact-list">
+    <div class="contact-row"><i class="fa-solid fa-phone"></i><a href="tel:+919360627826">+91 93606 27826</a></div>
+    <div class="contact-row"><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/919360627826" target="_blank" rel="noopener">WhatsApp Enquiry</a></div>
+    <div class="contact-row"><i class="fa-solid fa-envelope"></i><a href="mailto:navidigital1820@gmail.com">navidigital1820@gmail.com</a></div>
+    <div class="contact-row"><i class="fa-solid fa-location-dot"></i><span>Dharmapuri District, Tamil Nadu, India</span></div>
+    <div class="contact-row"><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram Example</a></div>
+   </div>
+  </div>
+  <form class="contact-form reveal" id="contactForm">
+   <div class="form-grid">
+    <div class="form-group"><label for="name">YOUR NAME</label><input id="name" required placeholder="Enter your name"></div>
+    <div class="form-group"><label for="phone">PHONE</label><input id="phone" required inputmode="tel" placeholder="10-digit mobile number"></div>
+    <div class="form-group"><label for="eventType">EVENT TYPE</label><select id="eventType"><option>Wedding Photography</option><option>Wedding Videography</option><option>Pre-Wedding</option><option>Family / Event</option><option>Portrait</option><option>Passport Photo</option><option>Printing / Frames</option><option>Album Design</option><option>Drone Service</option></select></div>
+    <div class="form-group"><label for="eventDate">EVENT DATE</label><input id="eventDate" type="date"></div>
+    <div class="form-group"><label for="town">TOWN / PLACE</label><input id="town" placeholder="Town / event location"></div>
+    <div class="form-group"><label for="budget">BUDGET</label><select id="budget"><option>₹10,000 - ₹25,000</option><option>₹25,000 - ₹40,000</option><option>₹40,000 - ₹60,000</option><option>₹60,000+</option><option>Not decided</option></select></div>
+    <div class="form-group full"><label for="message">MESSAGE</label><textarea id="message" placeholder="Tell us about your event..."></textarea></div>
+    <div class="form-group full"><button class="btn btn-gold" type="submit" style="width:100%"><i class="fa-brands fa-whatsapp"></i> SEND ENQUIRY ON WHATSAPP</button><div class="form-note">This form opens WhatsApp with your details. No server/database is required.</div></div>
+   </div>
+  </form>
+ </div>
+</section>
+
+<section class="section dark">
+ <div class="container" style="text-align:center">
+  <span class="eyebrow">NAVI DIGITAL HIGH TECH STUDIO & VIDEOS</span>
+  <h2 style="font-size:clamp(30px,4vw,46px);margin:8px 0">Your Story Deserves To Be <span class="gold">Remembered.</span></h2>
+  <p style="color:#aaa;font-size:14px;margin-bottom:22px">Photography • Videography • Printing • Framing • Albums • Events</p>
+  <button class="btn btn-gold" data-open-book>START YOUR ENQUIRY</button>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <div class="brand"><img src="data:image/png;base64,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" alt="NAVI logo"><div class="brand-text"><span class="top">NAVI DIGITAL HIGH TECH</span><span class="sub" style="color:#999">STUDIO & VIDEOS</span></div></div>
+    <p>Professional photography, videography, printing, framing and album services for weddings, events, portraits and family memories.</p>
+    <div class="socials"><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://wa.me/919360627826" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a><a href="mailto:navidigital1820@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a><a href="tel:+919360627826" aria-label="Call"><i class="fa-solid fa-phone"></i></a></div>
+   </div>
+   <div><div class="footer-title">QUICK LINKS</div><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#packages">Packages</a></li><li><a href="#contact">Contact</a></li></ul></div>
+   <div><div class="footer-title">SERVICES</div><ul><li>Wedding Photography</li><li>Videography</li><li>Portraits</li><li>Album Design</li><li>Printing & Frames</li><li>Drone Services</li></ul></div>
+   <div><div class="footer-title">CONTACT</div><ul><li>Dharmapuri District</li><li>Tamil Nadu, India</li><li><a href="tel:+919360627826">+91 93606 27826</a></li><li><a href="mailto:navidigital1820@gmail.com">navidigital1820@gmail.com</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram Example</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 NAVI DIGITAL HIGH TECH STUDIO & VIDEOS. All Rights Reserved.</div>
+ </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/919360627826?text=Hello%20NAVI%20Studio%2C%20I%20would%20like%20to%20book%20a%20service." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<div class="mobile-actions" aria-label="Quick contact actions">
+ <a href="tel:+919360627826"><i class="fa-solid fa-phone"></i>CALL</a>
+ <a href="https://wa.me/919360627826?text=Hello%20NAVI%20Studio%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WHATSAPP</a>
+ <button type="button" data-open-book><i class="fa-solid fa-calendar-check"></i>BOOK NOW</button>
+</div>
+
+<button class="top-btn" id="topBtn" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+ <button class="lb-close" id="lbClose" aria-label="Close image"><i class="fa-solid fa-xmark"></i></button>
+ <button class="lb-prev" id="lbPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+ <img class="lb-img" id="lbImg" alt="">
+ <button class="lb-next" id="lbNext" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+ <div class="lb-caption" id="lbCaption"></div>
+</div>
+
+<div class="modal" id="bookModal" aria-hidden="true">
+ <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+  <button class="modal-close" id="modalClose" aria-label="Close booking form"><i class="fa-solid fa-xmark"></i></button>
+  <h2 id="bookTitle">BOOK <span class="gold">NAVI</span></h2>
+  <p>Tell us the basic details. Your enquiry will open in WhatsApp.</p>
+  <form id="bookForm">
+   <div class="form-grid">
+    <div class="form-group"><label for="mName">YOUR NAME</label><input id="mName" required></div>
+    <div class="form-group"><label for="mPhone">PHONE</label><input id="mPhone" required inputmode="tel"></div>
+    <div class="form-group"><label for="mEvent">EVENT</label><select id="mEvent"><option>Wedding Photography</option><option>Wedding Videography</option><option>Pre-Wedding</option><option>Family / Event</option><option>Portrait</option><option>Printing / Frames</option><option>Album Design</option><option>Drone Service</option></select></div>
+    <div class="form-group"><label for="mDate">EVENT DATE</label><input id="mDate" type="date"></div>
+    <div class="form-group"><label for="mTown">TOWN / PLACE</label><input id="mTown"></div>
+    <div class="form-group"><label for="mBudget">BUDGET</label><select id="mBudget"><option>₹25,000 - ₹40,000</option><option>₹40,000 - ₹60,000</option><option>₹60,000+</option><option>Not decided</option></select></div>
+    <div class="form-group full"><label for="mMessage">MESSAGE</label><textarea id="mMessage" placeholder="Any special requirement?"></textarea></div>
+    <div class="form-group full"><button class="btn btn-gold" type="submit" style="width:100%"><i class="fa-brands fa-whatsapp"></i> SEND ON WHATSAPP</button></div>
+   </div>
+  </form>
+ </div>
+</div>
+
+<script>
+"use strict";
+(function(){
+ const $=s=>document.querySelector(s);
+ const $$=s=>Array.from(document.querySelectorAll(s));
+ const phone="919360627826";
+ const whatsappBase="https://wa.me/"+phone;
+
+ // Loader
+ window.addEventListener("load",()=>setTimeout(()=>$("#loader")?.classList.add("hide"),350));
+
+ // Mobile menu
+ const menu=$("#menuBtn"), nav=$("#navLinks");
+ menu?.addEventListener("click",()=>{
+   const open=nav.classList.toggle("open");
+   menu.setAttribute("aria-expanded",String(open));
+   menu.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>';
+ });
+ $$("#navLinks a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.innerHTML='<i class="fa-solid fa-bars"></i>';}));
+
+ // Hero slideshow: exactly 5 slides
+ const slides=$$(".hero-slide"), dots=$("#heroDots");
+ let slideIndex=0, slideTimer;
+ slides.forEach((_,i)=>{
+   const b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label","Go to slide "+(i+1));
+   b.addEventListener("click",()=>showSlide(i,true)); dots?.appendChild(b);
+ });
+ const dotBtns=()=>$$(".hero-dots button");
+ function showSlide(i,manual=false){
+   slideIndex=(i+slides.length)%slides.length;
+   slides.forEach((s,n)=>s.classList.toggle("active",n===slideIndex));
+   dotBtns().forEach((d,n)=>d.classList.toggle("active",n===slideIndex));
+   if(manual) resetTimer();
+ }
+ function resetTimer(){clearInterval(slideTimer);slideTimer=setInterval(()=>showSlide(slideIndex+1),5000)}
+ $("#heroPrev")?.addEventListener("click",()=>showSlide(slideIndex-1,true));
+ $("#heroNext")?.addEventListener("click",()=>showSlide(slideIndex+1,true));
+ showSlide(0);resetTimer();
+ const hero=$(".hero");
+ hero?.addEventListener("mouseenter",()=>clearInterval(slideTimer));
+ hero?.addEventListener("mouseleave",resetTimer);
+
+ // Gallery filter
+ const tabs=$$(".gallery-tabs button"), cards=$$(".gallery-card");
+ tabs.forEach(tab=>tab.addEventListener("click",()=>{
+   tabs.forEach(t=>t.classList.remove("active"));tab.classList.add("active");
+   const f=tab.dataset.filter;
+   cards.forEach(card=>{const show=f==="all"||card.dataset.cat===f;card.style.display=show?"block":"none";});
+ }));
+
+ // Lightbox - only currently visible gallery cards are navigable
+ const lightbox=$("#lightbox"), lbImg=$("#lbImg"), lbCaption=$("#lbCaption");
+ let current=0, visibleCards=[];
+ function refreshVisible(){visibleCards=cards.filter(c=>c.style.display!=="none")}
+ function openLightbox(card){
+   refreshVisible(); current=Math.max(0,visibleCards.indexOf(card));
+   updateLightbox(); lightbox.classList.add("show");lightbox.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");
+ }
+ function updateLightbox(){
+   const card=visibleCards[current]; if(!card)return;
+   const im=card.querySelector("img"); lbImg.src=im.currentSrc||im.src; lbImg.alt=im.alt; lbCaption.textContent=im.alt;
+ }
+ function closeLightbox(){lightbox.classList.remove("show");lightbox.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");}
+ function nextLb(dir){if(!visibleCards.length)return;current=(current+dir+visibleCards.length)%visibleCards.length;updateLightbox();}
+ cards.forEach(c=>{c.addEventListener("click",()=>openLightbox(c));c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openLightbox(c)}});});
+ $("#lbClose")?.addEventListener("click",closeLightbox);$("#lbPrev")?.addEventListener("click",()=>nextLb(-1));$("#lbNext")?.addEventListener("click",()=>nextLb(1));
+ lightbox?.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox();});
+ document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("show"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowRight")nextLb(1);if(e.key==="ArrowLeft")nextLb(-1);});
+ let touchX=0; lightbox?.addEventListener("touchstart",e=>touchX=e.changedTouches[0].clientX,{passive:true});
+ lightbox?.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>45)nextLb(dx<0?1:-1);},{passive:true});
+
+ // Before/after
+ const range=$("#baRange"), after=$("#baAfter");
+ range?.addEventListener("input",()=>after.style.clipPath=`inset(0 ${100-Number(range.value)}% 0 0)`);
+
+ // Reveal
+ const revealObs="IntersectionObserver" in window?new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");revealObs.unobserve(e.target)}}),{threshold:.12}):null;
+ $$(".reveal").forEach(el=>revealObs?revealObs.observe(el):el.classList.add("visible"));
+
+ // Back to top
+ const top=$("#topBtn");
+ window.addEventListener("scroll",()=>{if(top)top.style.display=window.scrollY>500?"grid":"none";});
+ top?.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+
+ // Booking modal
+ const modal=$("#bookModal");
+ function openBook(){modal.classList.add("show");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");setTimeout(()=>$("#mName")?.focus(),50);}
+ function closeBook(){modal.classList.remove("show");modal.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");}
+ $$("[data-open-book]").forEach(b=>b.addEventListener("click",openBook));
+ $("#modalClose")?.addEventListener("click",closeBook);
+ modal?.addEventListener("click",e=>{if(e.target===modal)closeBook();});
+
+ function cleanPhone(v){return String(v).replace(/\D/g,"").slice(-10)}
+ function openWhatsApp(data){
+   const msg=[
+    "Hello NAVI Digital High Tech Studio & Videos,",
+    "",
+    "Name: "+data.name,
+    "Phone: "+data.phone,
+    "Event: "+data.event,
+    "Date: "+(data.date||"Not specified"),
+    "Town / Place: "+(data.town||"Not specified"),
+    "Budget: "+(data.budget||"Not specified"),
+    "Message: "+(data.message||"Not specified")
+   ].join("\n");
+   window.open(whatsappBase+"?text="+encodeURIComponent(msg),"_blank","noopener");
+ }
+ function collect(prefix){return {
+   name:$("#"+prefix+"Name")?.value.trim()||"",
+   phone:cleanPhone($("#"+prefix+"Phone")?.value),
+   event:$("#"+prefix+"Event")?.value||"",
+   date:$("#"+prefix+"Date")?.value||"",
+   town:$("#"+prefix+"Town")?.value.trim()||"",
+   budget:$("#"+prefix+"Budget")?.value||"",
+   message:$("#"+prefix+"Message")?.value.trim()||""
+ };}
+ $("#bookForm")?.addEventListener("submit",e=>{e.preventDefault();const d=collect("m");if(d.phone.length<10){alert("Please enter a valid 10-digit phone number.");return}openWhatsApp(d);closeBook();});
+ $("#contactForm")?.addEventListener("submit",e=>{e.preventDefault();const d={name:$("#name").value.trim(),phone:cleanPhone($("#phone").value),event:$("#eventType").value,date:$("#eventDate").value,town:$("#town").value.trim(),budget:$("#budget").value,message:$("#message").value.trim()};if(d.phone.length<10){alert("Please enter a valid 10-digit phone number.");return}openWhatsApp(d);});
+
+ // Prevent broken images from breaking layout
+ $$("img").forEach(im=>im.addEventListener("error",()=>im.classList.add("load-error"),{once:true}));
+
+ // Active nav link based on section
+ const sections=$$("main section[id]");
+ const linkMap=new Map($$("#navLinks a[href^='#']").map(a=>[a.getAttribute("href").slice(1),a]));
+ if("IntersectionObserver" in window){
+  const navObs=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){linkMap.forEach(a=>a.classList.remove("active"));linkMap.get(entry.target.id)?.classList.add("active");}}),{rootMargin:"-25% 0px -65% 0px"});
+  sections.forEach(s=>navObs.observe(s));
+ }
+})();
+</script>
+</body>
+</html>
